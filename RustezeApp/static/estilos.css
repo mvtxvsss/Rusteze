@@ -432,3 +432,8 @@ transform: scale(1.03);
 
     color: #ffff;
 }
+
+.card-p{
+    height: 10%;
+    width: 10%;
+}

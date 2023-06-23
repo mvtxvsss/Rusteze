@@ -17,13 +17,13 @@
 <body>
     <div class="container">
         <div class="navbar">
-            <a class="logo-nav" href="">RUSTEZE.</a>
+            <a class="logo-nav" href="{% url 'Index' %}">RUSTEZE.</a>
             <nav class="nav">
                 <ul id="menuList">
-                    <li><a href="">Productos</a></li>
-                    <li><a href="">Sobre nostros</a></li>
-                    <li><a href="">Contactenos</a></li>
-                    <li><a href="">Iniciar sesion/registrarse</a></li>
+                    <li><a href="{% url 'Tienda' %}">Productos</a></li>
+                    <li><a href="{% url 'SobreNosotros' %}">Sobre nostros</a></li>
+                    <li><a href="{% url 'Contacto' %}">Contactenos</a></li>
+                    <li><a href="{% url 'IniciarSesion' %}">Iniciar sesion/registrarse</a></li>
                 </ul>
             </nav>
             <img src="{% static 'img/menu.png' %}" class="menu-nav" onclick="togglemenu()">

@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static './edicion2.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/98de68f252.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="{% static './images/main1.png'%}">
+
+    <title>Contactenos</title>
+
+<body>
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ubu">
+        <div class="container-fluid">
+          <a class="navbar-brands logo ubu" href="{% url 'Index' %}">RUSTEZE.</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            <form class="d-flex">
+                <li class="nav-item">
+                    <a class="nav-links active ubu" aria-current="page" href="{% url 'Tienda' %}">Productos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-links active ubu" aria-current="page" href="{% url 'SobreNosotros' %}">Sobre nosotros</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-links active ubu" aria-current="page" href="{% url 'Contacto' %}">Contactenos</a>
+                  </li>
+                  <li class="nav-item last">
+                    <a class="nav-links active ubu last" aria-current="page" href="{% url 'IniciarSesion' %}">Iniciar sesion/registrarse</a>
+                  </li>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    <!-- Contenido -->
+<div class="contenido">
+    <section class="main">
+        <div class="login-container">
+            <p class="title">Contacto Rusteze!</p>
+            <div class="separator"></div>
+            <p class="welcome-message">Para consultas respecto a pedidos o dudas, rellena este formularios y te escribiremos en la brevedad!</p>
+
+            <form class="login-form">
+                <div class="form-controls">
+                    <input type="text" placeholder="Su nombre">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="form-controls">
+                    <input type="email" placeholder="Correo electronico">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="form-controls">
+                    <input type="form" placeholder="Motivo de contacto">
+                    <i class="fa-solid fa-exclamation"></i>
+                </div>
+                <div class="form-controls">
+                    <input type="date" value="yyy-MM-DD" placeholder="Fecha de compra" class="date1">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <div class="form-controls">
+                    <input type="form" placeholder="Numero de compra">
+                    <i class="fa-regular fa-hashtag"></i>
+                </div>
+                <div class="form-controls">
+                    <input type="form" placeholder="Asunto">
+                    <i class="fa-solid fa-message"></i>
+                </div>
+                <div class="input-group">
+                    <textarea name="message" id="message" cols="30" rows="5" placeholder="Informacion adicional"></textarea>
+                </div>
+
+
+                <button class="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+</div>
+
+    <!-- Footer -->
+
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="{% static 'images/Rusteze-logoN.png'%}" alt="Logo de Rusteze">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2><b>SOBRE NOSOTROS</b></h2>
+                <P>Rusteze empresa lider en la venta de respuestos y accesorios automovilisticos!</P>
+                <P>La mejor calidad y variedad en respuestos para automoviles JDM.</P>
+            </div>
+            <div class="box">
+                <h2><b>SIGUENOS</b> </h2>
+                <div class="red-social">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-whatsapp"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2023 <b>Rusteze</b> - Todos los derechos reservados </small>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

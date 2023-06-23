@@ -1,0 +1,176 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static './sn.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/98de68f252.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="{% static './images/main1.png'%}">
+
+    <title>Sobre nosotros</title>
+
+<body>
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ubu">
+        <div class="container-fluid">
+          <a class="navbar-brands logo ubu" href="{% url 'Index' %}">RUSTEZE.</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            <form class="d-flex">
+              <li class="nav-item">
+                <a class="nav-links active ubu" aria-current="page" href="{% url 'Tienda' %}">Productos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-links active ubu" aria-current="page" href="{% url 'SobreNosotros' %}">Sobre nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-links active ubu" aria-current="page" href="{% url 'Contacto' %}">Contactenos</a>
+              </li>
+              <li class="nav-item last">
+                <a class="nav-links active ubu last" aria-current="page" href="{% url 'IniciarSesion' %}">Iniciar sesion/registrarse</a>
+              </li>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    <!-- Contenido -->
+
+    <section class = "contact-section">
+        <div class = "contact-bg " style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url({% static '/images/evox.jpg' %});">
+          <h3>Se veloz, compra en Rusteze.</h3>
+          <h2>Quienes somos?</h2>
+          <div class = "line">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <p class = "text">Empresa numero 1 en accesorios para automoviles dentro de la region metropolitana, con excelentes servicios y repuestos para tu regalon. Inmensa cantidad y variedad de stock especialmente en vehiculos JDM, especial para darle ese aspecto que tanto buscas para "la nave".</p>
+        </div>
+  
+  
+        <div class = "contact-body">
+          <div class = "contact-info">
+            <div>
+              <span><i class = "fas fa-mobile-alt"></i></span>
+              <span>Telefono</span>
+              <span class = "text">1-2392-23928-2</span>
+            </div>
+            <div>
+              <span><i class = "fas fa-envelope-open"></i></span>
+              <span>Email</span>
+              <span class = "text">rustezecl@company.cl</span>
+            </div>
+            <div>
+              <span><i class = "fas fa-map-marker-alt"></i></span>
+              <span>Direccion</span>
+              <span class = "text">México 361, 8070297 San Bernardo, Región Metropolitana</span>
+            </div>
+            <div>
+              <span><i class = "fas fa-clock"></i></span>
+              <span>Horario tienda</span>
+              <span class = "text">Lunes - Viernes (9:00 AM a 6:00 PM)</span>
+            </div>
+          </div>
+  
+          <div class = "contact-form">
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="{% static './images/main.png'%}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static './images/main2.png'%}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static './images/main3.png'%}" class="d-block w-100" alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+  
+            <div class="container-sn">
+              <h2>¿De donde nace Rusteze?</h2>
+              <p>Nuestra empresa nace en respuesta al auge significativo que experimentó la búsqueda de repuestos 
+                automovilísticos y accesorios para el tunning, especialmente para autos JDM, después de la pandemia. Nos dimos cuenta de 
+                la creciente demanda y vimos la oportunidad de crear una empresa líder en este campo apasionante.
+                En Rusteze, nos apasiona el mundo de los automóviles y entendemos la importancia de mantener tu vehículo en óptimas 
+                condiciones y personalizarlo para reflejar tu estilo único. Nos especializamos en ofrecer una amplia gama de repuestos 
+                y accesorios de alta calidad para autos JDM, permitiéndote mejorar el rendimiento y la apariencia de tu vehículo de manera distintiva.
+                Nos enorgullece contar con un equipo de expertos entusiastas de los autos que comparten tu pasión. Nuestro personal altamente capacitado 
+                y conocedor está disponible para brindarte asesoramiento personalizado y recomendaciones basadas en tus necesidades y preferencias 
+                individuales. Ya sea que estés buscando mejoras de rendimiento, accesorios de estilo o repuestos específicos, estamos aquí para 
+                ayudarte a encontrar las soluciones adecuadas.</p>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class = "map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106293.02443459451!2d-70.810938457346!3d-33.64013415374353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d93174d2a4a1%3A0x93558911259e13a6!2sSan%20Bernardo%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1685314666172!5m2!1ses!2scl" 
+            width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+
+    <!-- Footer -->
+
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="{% static 'images/Rusteze-logoN.png'%}" alt="Logo de Rusteze">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2><b>SOBRE NOSOTROS</b></h2>
+                <P>Rusteze empresa lider en la venta de respuestos y accesorios automovilisticos!</P>
+                <P>La mejor calidad y variedad en respuestos para automoviles JDM.</P>
+            </div>
+            <div class="box">
+                <h2><b>SIGUENOS</b> </h2>
+                <div class="red-social">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-whatsapp"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2023 <b>Rusteze</b> - Todos los derechos reservados </small>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static  %}
+{% block content %}
+
+
+<h1>Nuevo Alumno</h1>
+    <form action="{% url 'AgregarProducto' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" >Agregar producto</button>
+    </form>
+ 
+
+
+{% endblock %}
