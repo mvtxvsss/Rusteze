@@ -1,0 +1,19 @@
+# Entorno
+env
+.env
+venv
+.venv
+entorno
+.entorno
+
+# IDE
+
+.vscode
+.idea
+
+# Proyecto
+
+migration
+./__pycache__
+
+
