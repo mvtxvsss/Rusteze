@@ -1,35 +1,37 @@
-from RustezeApp.models import Producto
 from django.shortcuts import render, redirect
-#from form import ProductoForm
-from sweetify import info, success, warning, error
-from .form import ProductoForm
+from sweetify import success, warning, error
+from django.contrib.auth import logout  # authenticate, login
+from .form import *
+# from django.http import HttpResponse
 
-def Base(request):
 
-    return render(request,'base.html')
-def Index(request):
+def base(request):
+    return render(request, 'base/base.html')
 
-    return render(request,'index.html')
 
-def Tienda(request):
+def index(request):
+    return render(request, 'index.html')
 
-    return render(request,'Tienda.html')
 
-def SobreNosotros(request):
+def tienda(request):
+    return render(request, 'Tienda.html')
 
-    return render(request,'sobrenosotros.html')
 
-def Contacto(request):
+def sobre_nosotros(request):
+    return render(request, 'sobrenosotros.html')
 
-    return render(request,'Contacto.html')
 
-def IniciarSesion(request):
+def contacto(request):
+    return render(request, 'Contacto.html')
 
-    return render(request,'login.html')
 
-def Resgistro(request):
+def iniciar_sesion(request):
+    return render(request, 'login.html')
 
-    return render(request,'registro.html')
+
+def resgistro(request):
+    return render(request, 'registro.html')
+
 
 def listar_productos(request):
     productos = Producto.objects.all()
@@ -37,31 +39,42 @@ def listar_productos(request):
     return render(request, 'listar_productos.html', context)
 
 
-
 def agregar_producto(request):
     if request.method == 'POST':
         form = ProductoForm(initial={'prod_id': 0})
         if form.is_valid():
             form.save()
-            success(request,'El producto se ha agreado correctamente!')
+            success(request, 'El producto se ha agreado correctamente!')
             return redirect('ListarProductos')
     else:
         form = ProductoForm()
-    
-    return render(request,'agregar_producto.html',{'form':form})
+
+    return render(request, 'agregar_producto.html', {'form': form})
 
 
-"""
-def agregar_producto(request):
-    if request.method == "POST":
-        form = ProductoForm(request.POST)
-        if form.is_valid():
-            gato = form.save(commit=False)
-            form.save()
-        alumnos = Producto.objects.all()
-        return render(request,'paginab.html', {'alumnos':alumnos})
-    else:
-        form = ProductoForm()
-        return render(request,'agregarAlumno.html',{'form':form})
+def mostrar_registro(request):
+    if request.method == 'GET':
+        contexto = {
+            'formulario': Registro()
+        }
+        return render(request, 'registro_test.html', contexto)
+    if request.method == 'POST':
+        formulario_registro = Registro(data=request.POST)
+        es_valido = formulario_registro.is_valid()
+        if es_valido:
+            print('Valido')
+            usuario_nuevo = formulario_registro.save()
+            success(request, 'Se ha registrado su cuenta')
+            return redirect('Index')
+        contexto = {
+            'formulario': formulario_registro
+        }
+        error(request, 'A ocurrido un error, vuelva a intentarlo.')
+        return render(request, 'registro_test.html', contexto)
 
-"""
+
+def cerrar_sesion(request):
+    if request.user.is_authenticated:
+        logout(request)
+        warning(request, 'Se cerro la sesión')
+    return redirect('Index')
