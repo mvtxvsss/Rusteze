@@ -1,0 +1,52 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+    <title>
+        {% block titulo %}
+        {% endblock titulo %}
+    </title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/98de68f252.js" crossorigin="anonymous"></script>
+        <script src="{% static 'boostrap/js/bootstrap.bundle.min.js'%}"  crossorigin="anonymous"></script>
+        <link rel="icon" href="{% static 'images/main1.png'%}">
+
+    {% block css %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
+		<link rel="stylesheet" href="{% static 'estilos.css' %}" />
+        <!--
+        <link href="{% static 'boostrap/css/bootstrap.min.css' %}" rel="stylesheet" crossorigin="anonymous">
+        -->
+    {% endblock css %}
+</head>
+<body>
+<div class="container">
+
+{% include 'base/navbar.html' %}
+
+{% block contenido %}
+{% endblock contenido %}
+
+</div>
+
+{% include 'base/footer.html' %}
+
+<!--<script src="{% static 'boostrap/js/bootstrap.bundle.min.js' %}"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+{% load sweetify %}
+{% sweetify %}
+
+{% block js %}
+
+{% endblock js %}
+
+</body>
+</html>
