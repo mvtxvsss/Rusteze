@@ -61,26 +61,38 @@
             <div class="separator"></div>
             <p class="welcome-message">Por favor, inicia sesion para obtener acceso a todo nuestro el contenido.</p>
 
-            <form class="login-form" id="myForm">
+            <form class="login-form" id="myForm" action="" method="POST">
+                {% csrf_token %}
+                <!--
                 <div class="form-controls">
                     <label for="name">nombre</label>
                     <input type="text"  name="name"  id="name" placeholder="Usuario" >
                     <span id="nameError" class="error"></span>
                     <i class="fas fa-user"></i>
                 </div>
+                -->
+                <!-- Campo email -->
                 <div class="form-controls">
-                    <label for="name">Email</label>
-                    <input type="email"  name="email"  id="email" placeholder="Email" >
+                    <label for="{{ formulario_sesion.email_address.id_for_label }}">
+                        <input type="email"  name="email"  id="email" placeholder="Email o Usuario" >
+                        <i class="fas fa-user"></i>
+                    </label>
                     <span id="nameEmail" class="error"></span>
-                    <i class="fas fa-user"></i>
                 </div>
+                <!-- Fin campo email -->
+
+                <!-- Campo Contraseña -->
                 <div class="form-controls">
-                    <input type="password" name="password" id="password" placeholder="Contraseña" >
+                    <label for="{{ formulario_sesion.password.id_for_label }}">
+                        <input type="password" name="password" id="password" placeholder="Contraseña" >
+                        <i class="fas fa-lock"></i>
+                    </label>
                     <span id="passwordError" class="error"></span>
-                    <i class="fas fa-lock"></i>
                 </div>
-                <center><p>No tienes cuenta? <a href="{% url 'Registro' %}">registrate</a></p></center>
-                <button type="submit" class="submit" >Iniciar sesion</button>
+                <!-- Fin campo Contraseña -->
+
+                <p>No tienes cuenta? <a href="{% url 'Registro' %}">registrate</a></p>
+                <button type="submit" id="myForm" class="submit" >Iniciar sesion</button>
                 <button type="button" class="btn btn-primary submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Necesitas ayuda?
                 </button>
@@ -104,6 +116,7 @@
                     </div>
                   </div>
             </form>
+
         </div>
     </section>
 </div>
