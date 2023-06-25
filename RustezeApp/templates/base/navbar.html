@@ -8,9 +8,9 @@
                     <li><a href="{% url 'SobreNosotros' %}">Sobre nostros</a></li>
                     <li><a href="{% url 'Contacto' %}">Contactenos</a></li>
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'Perfil' %}">Cerrar Sesion</a></li>
+                    <li><a href="{% url 'CerrarSesion' %}">Cerrar Sesion</a></li>
                     {% else %}
-                    <li><a href="{% url 'IniciarSesion' %}">Iniciar sesion/registrarse</a></li>
+                    <li><a href="">Iniciar sesion/registrarse</a></li>
                     {% endif %}
                 </ul>
             </nav>
