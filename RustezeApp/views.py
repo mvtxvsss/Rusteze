@@ -57,7 +57,7 @@ def mostrar_registro(request):
         contexto = {
             'formulario': Registro()
         }
-        return render(request, 'registro_test.html', contexto)
+        return render(request, 'registro.html', contexto)
     if request.method == 'POST':
         formulario_registro = Registro(data=request.POST)
         es_valido = formulario_registro.is_valid()
@@ -70,7 +70,7 @@ def mostrar_registro(request):
             'formulario': formulario_registro
         }
         error(request, 'A ocurrido un error, vuelva a intentarlo.')
-        return render(request, 'registro_test.html', contexto)
+        return render(request, 'registro.html', contexto)
 
 
 def cerrar_sesion(request):

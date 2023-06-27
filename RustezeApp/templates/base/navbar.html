@@ -9,8 +9,12 @@
                     <li><a href="{% url 'Contacto' %}">Contactenos</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'CerrarSesion' %}">Cerrar Sesion</a></li>
+                    <!-- Carrito de compras -->
                     {% else %}
+
+                    <!-- !!!!!! Cuando iniciar sesion este listo poner su url en href -->
                     <li><a href="">Iniciar sesion/registrarse</a></li>
+
                     {% endif %}
                 </ul>
             </nav>
