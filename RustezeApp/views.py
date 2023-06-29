@@ -1,8 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from sweetify import success, warning, error
-from django.contrib.auth import logout  # authenticate, login
+from django.contrib.auth import logout, authenticate, login
 from .form import *
-# from django.http import HttpResponse
 
 
 def base(request):
@@ -14,7 +13,9 @@ def index(request):
 
 
 def tienda(request):
-    return render(request, 'Tienda.html')
+    # Listar productos
+    productos = Producto.objects.all()
+    return render(request, 'tienda.html', {'productos': productos})
 
 
 def sobre_nosotros(request):
@@ -22,7 +23,7 @@ def sobre_nosotros(request):
 
 
 def contacto(request):
-    return render(request, 'Contacto.html')
+    return render(request, 'contacto.html')
 
 
 def iniciar_sesion(request):
@@ -78,3 +79,68 @@ def cerrar_sesion(request):
         logout(request)
         warning(request, 'Se cerro la sesión')
     return redirect('Index')
+
+
+def user_login(request):
+    if request.method == 'POST':
+        form = IniciarSesion(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            usuario = authenticate(request, username=username, password=password)
+            if usuario is not None:
+                login(request, usuario)
+                success(request, f'Se inició sesion, Bienvenido {username}')
+                return redirect('Index')
+            else:
+                error(request, 'Nombre de usuario o contraseña incorrectos.')
+    elif request.method == 'GET':
+        return render(request, 'login.html')
+    else:
+        form = IniciarSesion()
+
+    return render(request, 'login.html', {'form': form})
+
+
+def agregar(request):
+
+    data = {
+        'form': ProductoForm
+    }
+
+    if request.method == 'POST':
+        formulario = ProductoForm(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            success(request, 'Se registro el producto!')
+            return redirect(to="Tienda")
+            data["mensaje"] = "Guardado correctamente"
+        else:
+            data["form"] = formulario
+
+    return render(request, 'producto/agregar.html', data)
+
+
+def modificar(request, id):
+    producto = get_object_or_404(Producto, id=id)
+
+    data = {
+        'form': ProductoForm(instance=producto)
+    }
+
+    if request.method == 'POST':
+        formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            success(request, 'Se modifico el producto!')
+            return redirect(to="Tienda")
+        data["form"] = formulario
+
+    return render(request, 'producto/modificar.html', data)
+
+
+def eliminar(request, id):
+    producto = get_object_or_404(Producto, id=id)
+    producto.delete()
+    success(request, 'Se elimino el producto.')
+    return redirect(to="Tienda")

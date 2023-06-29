@@ -31,13 +31,9 @@ class Cliente(models.Model):
 
 
 class Producto(models.Model):
-    prod_id = models.IntegerField(primary_key=True)
-    nombre = models.CharField(max_length=200)
-    descripcion = models.CharField(max_length=500)
+    nombre = models.CharField(max_length=50)
     precio = models.IntegerField()
+    descripcion = models.TextField()
+    nuevo = models.BooleanField()
+    imagen = models.ImageField(upload_to="productos", null=True)
 
-    class Meta:
-        ordering = ['prod_id']
-
-# class Vehiculo(models.Model):
-# id = models.IntegerField(primary_key=True, max_length=6)
