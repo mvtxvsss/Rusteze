@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from sweetify import success, warning, error
 from django.contrib.auth import logout, authenticate, login
 from .form import *
+from django.contrib.auth.decorators import user_passes_test
 
 
 def base(request):
@@ -13,10 +14,17 @@ def index(request):
 
 
 def tienda(request):
-    # Listar productos
     productos = Producto.objects.all()
     return render(request, 'tienda.html', {'productos': productos})
 
+
+def tienda_publica(request):
+    productos = Producto.objects.all()
+    return render(request, 'tienda_publica.html', {'productos': productos})
+
+
+def carrito(request):
+    return render(request, 'carrito.html')
 
 def sobre_nosotros(request):
     return render(request, 'sobrenosotros.html')
@@ -24,6 +32,15 @@ def sobre_nosotros(request):
 
 def contacto(request):
     return render(request, 'contacto.html')
+
+
+def validate_user(user):
+    return user.is_authenticated and user.is_staff
+
+
+@user_passes_test(validate_user)
+def mantenedor(request):
+    return render(request, 'mantenedor.html')
 
 
 def iniciar_sesion(request):
@@ -34,10 +51,6 @@ def resgistro(request):
     return render(request, 'registro.html')
 
 
-def listar_productos(request):
-    productos = Producto.objects.all()
-    context = {'productos': productos}
-    return render(request, 'listar_productos.html', context)
 
 
 def agregar_producto(request):
