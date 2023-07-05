@@ -1,0 +1,266 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'edicion3.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/98de68f252.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="{% static 'images/main1.png'%}">
+
+    <title>Productos</title>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ubu">
+        <div class="container-fluid">
+          <a class="navbar-brands logo ubu" href="{% url 'Index' %}">RUSTEZE.</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            <form class="d-flex">
+                <li class="nav-item">
+                    <a class="nav-links active ubu" aria-current="page" href="{% url 'Tienda' %}">Productos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-links active ubu" aria-current="page" href="{% url 'SobreNosotros' %}">Sobre nosotros</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-links active ubu" aria-current="page" href="{% url 'Contacto' %}">Contactenos</a>
+                  </li>
+                  {% if user.is_authenticated %}
+                    <li>
+                        <a class="nav-links active ubu" aria-current="page" href="{% url 'CerrarSesion' %}">Cerrar Sesion</a>
+                    </li>
+                    <!-- Carrito de compras -->
+                    {% else %}
+
+                    <!-- !!!!!! Cuando iniciar sesion este listo poner su url en href -->
+                    <li>
+                        <a class="nav-links active ubu" aria-current="page" href="{% url 'IniciarSesion' %}">Iniciar sesion/registrarse</a>
+                    </li>
+
+                    {% endif %}
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    <!-- Contenido -->
+
+    <section class = "contact-section">
+      <div class = "contact-bg " style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url({% static '/images/fondoproductos4.jpg' %});">
+        <h2><B>PRODUCTOS</B></h2>
+        <h6><b>Categoria, marcas y diseños...</b></h6>
+      </div>
+      </section>
+
+    <div class="container1">
+      <div class="seccion1">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Marcas
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    BBS
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Vossen
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Asanti
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Enkei
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                Categorias
+              </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Rines
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Spoilers
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Lips
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Enkei
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                Tipo automovil
+              </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Honda
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Mistubishi
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Toyota
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Nissan
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="seccion2">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+
+          {% for x in productos %}
+          <div class="col">
+            <div class="card">
+              <img src="{{x.imagen.url}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title"><b>{{ x.nombre }}</b></h5>
+                <h6 class="card-title">{{ x.descripcion }}</h6>
+                <p class="card-text"><b>${{ x.precio }}</b></p>
+                <button class="btn btn-dark btn-sm" type="button" >
+                    <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="">🛒 Agregar al carro</a>
+                </button>
+                <div class="d-grid gap-2 col-6 mx-auto">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="{% static 'images/Rusteze-logoN.png'%}" alt="Logo de Rusteze">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2><b>SOBRE NOSOTROS</b></h2>
+                <P>Rusteze empresa lider en la venta de respuestos y accesorios automovilisticos!</P>
+                <P>La mejor calidad y variedad en respuestos para automoviles JDM.</P>
+            </div>
+            <div class="box">
+                <h2><b>SIGUENOS</b> </h2>
+                <div class="red-social">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-whatsapp"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2023 <b>Rusteze</b> - Todos los derechos reservados </small>
+        </div>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    {% load sweetify %}
+{% sweetify %}
+
+    <script type="text/javascript">
+
+
+        </script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

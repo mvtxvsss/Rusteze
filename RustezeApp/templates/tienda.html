@@ -174,13 +174,16 @@
                   </label>
                 </div>
               </div>
+
+
             </div>
           </div>
+          <button class="btn btn-success btn-sm my-3" type="button" ><a href="{% url 'Agregar'%}">Agregar</a></button>
         </div>
       </div>
       <div class="seccion2">
         <div class="row row-cols-1 row-cols-md-3 g-4">
-          
+
 
           {% for x in productos %}
           <div class="col">
@@ -190,7 +193,6 @@
                 <h5 class="card-title"><b>{{ x.nombre }}</b></h5>
                 <h6 class="card-title">{{ x.descripcion }}</h6>
                 <p class="card-text"><b>${{ x.precio }}</b></p>
-                <button class="btn btn-success btn-sm" type="button" ><a href="{% url 'Agregar'%}">Agregar</a></button>
                 <button class="btn btn-info btn-sm" type="button" ><a href="{% url 'Modificar' x.id %}">Modificar</a></button>
                 <button class="btn btn-danger btn-sm" type="button" ><a href="{% url 'Eliminar' x.id %}">Eliminar</a></button>
                 <div class="d-grid gap-2 col-6 mx-auto">
