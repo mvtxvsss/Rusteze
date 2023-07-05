@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block titulo %}Mantenedor | Rusteze{% endblock titulo %}
+
+{% block contenido %}
+    <br><br>
+<h1 style="text-align: center">Mantenedor de Rusteze</h1>
+    <br>
+    <div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+    <div class="card-body">
+    <h5 class="card-title" style="font-size: 18px">MANTENEDOR DE PRODUCTOS</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Administrar productos de la tienda</h6>
+    <p class="card-text">Aqui podras agregar, eliminar, listar y modificar los productos mostrados en la tienda.</p>
+    <a href="{% url 'Tienda' %}">Ir al mantenedor de productos</a>
+  </div>
+</div>
+    </div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title" style="font-size: 18px">MANTENEDOR DE USUARIOS</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Administrar usuarios</h6>
+    <p class="card-text">Aqui podras agregar, eliminar, listar, modificar y ver los datos de los usuarios.</p>
+    <a href="#">Ir al mantenedor de usuarios</a>
+  </div>
+</div>
+    </div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+<div class="card-body">
+    <h5 class="card-title" style="font-size: 18px">INVENTARIO</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Administrar el inventario</h6>
+    <p class="card-text">Aqui podras agregar, eliminar, listar, modificar y ver los datos de los usuarios.</p>
+    <a href="#">Ver inventario</a>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock contenido %}
