@@ -8,11 +8,13 @@
                     <li><a href="{% url 'SobreNosotros' %}">Sobre nostros</a></li>
                     <li><a href="{% url 'Contacto' %}">Contactenos</a></li>
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'CerrarSesion' %}">Cerrar Sesion</a></li>
-                    <!-- Carrito de compras -->
+                        {% if user.is_staff %}
+                            <li><a href="{% url 'Mantenedor' %}">Mantenedor</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'CerrarSesion' %}">Cerrar sesion</a></li>
+                        <li><a href="{% url 'carrito' %}">🛒 Carrito(3)</a></li>
                     {% else %}
 
-                    <!-- !!!!!! Cuando iniciar sesion este listo poner su url en href -->
                     <li><a href="{% url 'IniciarSesion' %}">Iniciar sesion/registrarse</a></li>
 
                     {% endif %}
