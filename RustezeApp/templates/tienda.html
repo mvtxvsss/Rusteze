@@ -33,7 +33,7 @@
             </ul>
             <form class="d-flex">
                 <li class="nav-item">
-                    <a class="nav-links active ubu" aria-current="page" href="{% url 'Tienda' %}">Productos</a>
+                    <a class="nav-links active ubu" aria-current="page" href="{% url 'tienda' %}">Productos</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-links active ubu" aria-current="page" href="{% url 'SobreNosotros' %}">Sobre nosotros</a>
@@ -41,17 +41,15 @@
                   <li class="nav-item">
                     <a class="nav-links active ubu" aria-current="page" href="{% url 'Contacto' %}">Contactenos</a>
                   </li>
-                  {% if user.is_authenticated %}
-                    <li>
-                        <a class="nav-links active ubu" aria-current="page" href="{% url 'CerrarSesion' %}">Cerrar Sesion</a>
-                    </li>
-                    <!-- Carrito de compras -->
+                    {% if user.is_authenticated %}
+                        {% if user.is_staff %}
+                            <li><a class="nav-links active ubu" href="{% url 'Mantenedor' %}">Mantenedor</a></li>
+                        {% endif %}
+                        <li><a class="nav-links active ubu" href="{% url 'CerrarSesion' %}">Cerrar sesion</a></li>
+                        <li><a class="nav-links active ubu" href="{% url 'carrito' %}">🛒 Carrito</a></li>
                     {% else %}
 
-                    <!-- !!!!!! Cuando iniciar sesion este listo poner su url en href -->
-                    <li>
-                        <a class="nav-links active ubu" aria-current="page" href="{% url 'IniciarSesion' %}">Iniciar sesion/registrarse</a>
-                    </li>
+                    <li><a class="nav-links active ubu" href="{% url 'IniciarSesion' %}">Iniciar sesion/registrarse</a></li>
 
                     {% endif %}
             </form>
@@ -178,7 +176,10 @@
 
             </div>
           </div>
-          <button class="btn btn-success btn-sm my-3" type="button" ><a href="{% url 'Agregar'%}">Agregar</a></button>
+            <br>
+            <a href="{% url 'Agregar'%}">
+            <button class="btn btn-success btn-sm" type="submit">Registrar un producto</button>
+            </a>
         </div>
       </div>
       <div class="seccion2">
@@ -193,10 +194,13 @@
                 <h5 class="card-title"><b>{{ x.nombre }}</b></h5>
                 <h6 class="card-title">{{ x.descripcion }}</h6>
                 <p class="card-text"><b>${{ x.precio }}</b></p>
-                <button class="btn btn-info btn-sm" type="button" ><a href="{% url 'Modificar' x.id %}">Modificar</a></button>
-                <button class="btn btn-danger btn-sm" type="button" ><a href="{% url 'Eliminar' x.id %}">Eliminar</a></button>
+                <a href="{% url 'Modificar' x.id %}">
+                  <button class="btn btn-info btn-sm" type="submit">Modificar</button>
+                </a>
+                <a href="{% url 'Eliminar' x.id %}">
+                    <button class="btn btn-danger btn-sm" type="button" >Eliminar</button>
+                </a>
                 <div class="d-grid gap-2 col-6 mx-auto">
-                 
                 </div>
               </div>
             </div>
