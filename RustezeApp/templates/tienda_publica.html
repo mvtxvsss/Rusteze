@@ -21,8 +21,7 @@
 
 <body>
 
-    <!-- NAV -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ubu">
+<nav class="navbar navbar-expand-lg navbar-light bg-light ubu">
         <div class="container-fluid">
           <a class="navbar-brands logo ubu" href="{% url 'Index' %}">RUSTEZE.</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +32,7 @@
             </ul>
             <form class="d-flex">
                 <li class="nav-item">
-                    <a class="nav-links active ubu" aria-current="page" href="{% url 'Tienda' %}">Productos</a>
+                    <a class="nav-links active ubu" aria-current="page" href="{% url 'tienda' %}">Productos</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-links active ubu" aria-current="page" href="{% url 'SobreNosotros' %}">Sobre nosotros</a>
@@ -41,17 +40,15 @@
                   <li class="nav-item">
                     <a class="nav-links active ubu" aria-current="page" href="{% url 'Contacto' %}">Contactenos</a>
                   </li>
-                  {% if user.is_authenticated %}
-                    <li>
-                        <a class="nav-links active ubu" aria-current="page" href="{% url 'CerrarSesion' %}">Cerrar Sesion</a>
-                    </li>
-                    <!-- Carrito de compras -->
+                    {% if user.is_authenticated %}
+                        {% if user.is_staff %}
+                            <li><a class="nav-links active ubu" href="{% url 'Mantenedor' %}">Mantenedor</a></li>
+                        {% endif %}
+                        <li><a class="nav-links active ubu" href="{% url 'CerrarSesion' %}">Cerrar sesion</a></li>
+                        <li><a class="nav-links active ubu" href="{% url 'carrito' %}">🛒 Carrito</a></li>
                     {% else %}
 
-                    <!-- !!!!!! Cuando iniciar sesion este listo poner su url en href -->
-                    <li>
-                        <a class="nav-links active ubu" aria-current="page" href="{% url 'IniciarSesion' %}">Iniciar sesion/registrarse</a>
-                    </li>
+                    <li><a class="nav-links active ubu" href="{% url 'IniciarSesion' %}">Iniciar sesion/registrarse</a></li>
 
                     {% endif %}
             </form>
@@ -190,11 +187,10 @@
                 <h5 class="card-title"><b>{{ x.nombre }}</b></h5>
                 <h6 class="card-title">{{ x.descripcion }}</h6>
                 <p class="card-text"><b>${{ x.precio }}</b></p>
-                <button class="btn btn-dark btn-sm" type="button" >
-                    <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="">🛒 Agregar al carro</a>
-                </button>
+                <a href="{% url 'agregar_carrito' x.id %}">
+                    <button class="btn btn-dark btn-sm" type="submit">🛒 Agregar al carro</button>
+                </a>
                 <div class="d-grid gap-2 col-6 mx-auto">
-
                 </div>
               </div>
             </div>
