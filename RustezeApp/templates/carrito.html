@@ -5,37 +5,60 @@
 {% block contenido %}
 
     <div class="container">
-        <br>
-    <h1>Tus productos en el carrito</h1>
+    <br>
+    <h1>Tu carrito de compras</h1>
+    <br>
+    {% if cart %}
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">ID</th>
+      <th scope="col">Producto</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Acción</th>
     </tr>
   </thead>
   <tbody>
+  {% for i in cart %}
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{ i.product_id }}</th>
+      <td>{{ i.name }}</td>
+      <td>CLP$ {{ i.price }}</td>
+      <td>{{ i.quantity }}</td>
+      <td>
+      <a href="{% url 'incrementar' i.product_id %}">
+        <button class="btn btn-success btn-sm" type="submit">➕</button>
+      </a>
+      <a href="{% url 'decrementar' i.product_id %}">
+        <button class="btn btn-warning btn-sm" type="submit">➖</button>
+      </a>
+      <a href="{% url 'quitar' i.product_id %}">
+        <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+      </a>
+      </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+  {% endfor %}
   </tbody>
 </table>
+        <h4 class="fw-bold">Subtotal: <span class="fw-lighter">{{ subtotal }}</span></h4>
+        <h4 class="fw-bold">IVA(19%): <span class="fw-lighter">{{ iva }}</span></h4>
+        <h4 class="fw-bold">Total a pagar: <span class="fw-lighter">{{ total }}</span></h4>
+        <br>
+        <form action="{% url 'vaciar'%}" method="POST">
+          {% csrf_token %}
+            <button class="btn btn-secondary btn-sm" type="submit">Vaciar</button>
+            <button class="btn btn-secondary btn-sm" href="#">Pagar</button>
+        </form>
+
+        <br><br>
+        {% else %}
+        <!--perdon por esta basura pero el css esta roto y no se aplican las clases 🫥-->
+        <br><br><br><br><br><br><br><br><br>
+        <center><h1>No hay productos en el carrito!</h1></center>
+        <center><a href="{% url 'tienda' %}"><h3>Ir a la tienda</h3></a></center>
+        <br><br><br><br><br><br><br><br><br>
+        {% endif %}
     </div>
 
 {% endblock contenido %}
