@@ -21,36 +21,40 @@
 
 <body>
     <!-- NAV -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ubu">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ubu">
         <div class="container-fluid">
-            <a class="navbar-brands logo ubu" href="{% url 'Index' %}">RUSTEZE.</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                </ul>
-                <form class="d-flex">
-                    <li class="nav-item">
-                        <a class="nav-links active ubu" aria-current="page" href="{% url 'Tienda' %}">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-links active ubu" aria-current="page" href="{% url 'SobreNosotros' %}">Sobre
-                            nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-links active ubu" aria-current="page" href="{% url 'Contacto' %}">Contactenos</a>
-                    </li>
-                    <li class="nav-item last">
-                        <a class="nav-links active ubu last" aria-current="page"
-                            href="{% url 'IniciarSesion' %}">Iniciar sesion/registrarse</a>
-                    </li>
-                </form>
-            </div>
+          <a class="navbar-brands logo ubu" href="{% url 'Index' %}">RUSTEZE.</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            <form class="d-flex">
+                <li class="nav-item">
+                    <a class="nav-links active ubu" aria-current="page" href="{% url 'tienda' %}">Productos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-links active ubu" aria-current="page" href="{% url 'SobreNosotros' %}">Sobre nosotros</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-links active ubu" aria-current="page" href="{% url 'Contacto' %}">Contactenos</a>
+                  </li>
+                    {% if user.is_authenticated %}
+                        {% if user.is_staff %}
+                            <li><a class="nav-links active ubu" href="{% url 'Mantenedor' %}">Mantenedor</a></li>
+                        {% endif %}
+                        <li><a class="nav-links active ubu" href="{% url 'CerrarSesion' %}">Cerrar sesion</a></li>
+                        <li><a class="nav-links active ubu" href="{% url 'carrito' %}">🛒 Carrito</a></li>
+                    {% else %}
+
+                    <li><a class="nav-links active ubu" href="{% url 'IniciarSesion' %}">Iniciar sesion/registrarse</a></li>
+
+                    {% endif %}
+            </form>
+          </div>
         </div>
-    </nav>
+      </nav>
 
     <!-- Contenido -->
 
@@ -74,9 +78,9 @@
             </div>
         </div>
     </div>
+    <br><br>
 
     <!-- Footer -->
-
     <footer class="pie-pagina">
         <div class="grupo-1">
             <div class="box">
