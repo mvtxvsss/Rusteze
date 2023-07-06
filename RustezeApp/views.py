@@ -3,6 +3,7 @@ from sweetify import success, warning, error
 from django.contrib.auth import logout, authenticate, login
 from .form import *
 from django.contrib.auth.decorators import user_passes_test
+from .cart import *
 
 
 def base(request):
@@ -26,6 +27,7 @@ def tienda_publica(request):
 def carrito(request):
     return render(request, 'carrito.html')
 
+
 def sobre_nosotros(request):
     return render(request, 'sobrenosotros.html')
 
@@ -47,10 +49,50 @@ def iniciar_sesion(request):
     return render(request, 'login.html')
 
 
-def resgistro(request):
-    return render(request, 'registro.html')
+def agregar_carrito(request, id):
+    cart = Cart(request)
+    producto = get_object_or_404(Producto, id=id)
+    cart.add(producto)
+    success(request, f'Se ha agregado {producto.nombre.lower()} al carrito')
+    return redirect("tienda")
 
 
+def mostrar_carrito(request):
+    cart = Cart(request)
+    context = {
+        'cart': cart.get_products(),
+        'subtotal': cart.get_subtotal_price(),
+        'iva': cart.get_iva(),
+        'total': cart.get_total_price()
+    }
+    return render(request, 'carrito.html', context)
+
+
+def quitar_producto_carrito(request, id):
+    cart = Cart(request)
+    producto = get_object_or_404(Producto, id=id)
+    cart.remove(producto)
+    return redirect("carrito")
+
+
+def vaciar_carrito(request):
+    cart = Cart(request)
+    cart.clear()
+    return redirect("carrito")
+
+
+def incrementar_producto_carrito(request, id):
+    cart = Cart(request)
+    producto = get_object_or_404(Producto, id=id)
+    cart.increment(producto)
+    return redirect("carrito")
+
+
+def decrementar_producto_carrito(request, id):
+    cart = Cart(request)
+    producto = get_object_or_404(Producto, id=id)
+    cart.decrement(producto)
+    return redirect("carrito")
 
 
 def agregar_producto(request):
@@ -116,7 +158,6 @@ def user_login(request):
 
 
 def agregar(request):
-
     data = {
         'form': ProductoForm
     }

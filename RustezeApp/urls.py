@@ -20,7 +20,14 @@ urlpatterns = [
 
     # Tienda usuarios
     path('tienda', views.tienda_publica, name='tienda'),
-    path('carrito', views.carrito, name='carrito'),
+    path('carrito', views.mostrar_carrito, name='carrito'),
+
+    # Carrito
+    path('agregar_carrito/<id>', views.agregar_carrito, name='agregar_carrito'),
+    path('quitar/<id>', views.quitar_producto_carrito, name='quitar'),
+    path('vaciar', views.vaciar_carrito, name='vaciar'),
+    path('incrementar/<id>', views.incrementar_producto_carrito, name='incrementar'),
+    path('decrementar/<id>', views.decrementar_producto_carrito, name='decrementar'),
 
     # Urls tienda
     path('Tienda', views.tienda, name='Tienda'),
