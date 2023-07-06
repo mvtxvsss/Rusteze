@@ -9,7 +9,7 @@
             </ul>
             <form class="d-flex">
                 <li class="nav-item">
-                    <a class="nav-links active ubu" aria-current="page" href="{% url 'Tienda' %}">Productos</a>
+                    <a class="nav-links active ubu" aria-current="page" href="{% url 'tienda' %}">Productos</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-links active ubu" aria-current="page" href="{% url 'SobreNosotros' %}">Sobre nosotros</a>
@@ -22,10 +22,10 @@
                             <li><a class="nav-links active ubu" href="{% url 'Mantenedor' %}">Mantenedor</a></li>
                         {% endif %}
                         <li><a class="nav-links active ubu" href="{% url 'CerrarSesion' %}">Cerrar sesion</a></li>
-                        <li><a class="nav-links active ubu" href="{% url 'carrito' %}">🛒 Carrito(3)</a></li>
+                        <li><a class="nav-links active ubu" href="{% url 'carrito' %}">🛒 Carrito</a></li>
                     {% else %}
 
-                    <li><a href="{% url 'IniciarSesion' %}">Iniciar sesion/registrarse</a></li>
+                    <li><a class="nav-links active ubu" href="{% url 'IniciarSesion' %}">Iniciar sesion/registrarse</a></li>
 
                     {% endif %}
             </form>
